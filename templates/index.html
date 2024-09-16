@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Champions League Simulation</title>
+</head>
+<body>
+    <h1>Welcome to the Champions League Simulation</h1>
+    <form action="/matchday" method="get">
+        <label for="matchday">Enter Matchday Number:</label>
+        <input type="number" id="matchday" name="matchday" min="1" max="8" required>
+        <input type="submit" value="View Matchday">
+    </form>
+    <form action="/team" method="get">
+        <label for="team_name">Enter Team Name:</label>
+        <input type="text" id="team_name" name="team_name" required>
+        <input type="submit" value="Get Team Info">
+    </form>
+    <form action="/table" method="get">
+        <input type="submit" value="View Table">
+    </form>
+</body>
+</html>

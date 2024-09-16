@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Champions League - Standings after Matchday {{ matchday }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table th, table td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+        }
+        table th {
+            background-color: #eee;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            display: block;
+            margin: 20px auto;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Champions League - Standings after Matchday {{ matchday }}</h1>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Team</th>
+                    <th>Played</th>
+                    <th>Wins</th>
+                    <th>Draws</th>
+                    <th>Losses</th>
+                    <th>Goals For</th>
+                    <th>Goals Against</th>
+                    <th>Goal Difference</th>
+                    <th>Last 5</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for team_info in table %}
+                    <tr>
+                        <td>{{ team_info.name }}</td>
+                        <td>{{ team_info.played }}</td>
+                        <td>{{ team_info.wins }}</td>
+                        <td>{{ team_info.draws }}</td>
+                        <td>{{ team_info.losses }}</td>
+                        <td>{{ team_info.goals_for }}</td>
+                        <td>{{ team_info.goals_against }}</td>
+                        <td>{{ team_info.goal_difference }}</td>
+                        <td>{{ team_info.last_five }}</td>
+                        <td>{{ team_info.points }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        {% if matchday < 7 %}
+            <form method="GET" action="{{ url_for('matchday_form', matchday=matchday + 1) }}">
+                <button type="submit">Next Matchday</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>
